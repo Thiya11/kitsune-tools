@@ -1,0 +1,68 @@
+body{
+    height: 100%;
+    background-color: #ebcaeb;
+}
+
+.body-container{
+    height: 98vh;
+}
+
+// maintenance component
+.maintenance-header {
+    text-align: center;
+    background-color: #3c203c;
+    margin-top: 3rem;
+    color: #fff;
+}
+
+.maintenance-header h2 {
+    padding: 3px;
+}
+
+.maintenance-container {
+    height: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.maintenance-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.maintenance-content p {
+    margin-top: 10px;
+}
+
+.custom-btn {
+    background-color: #3c203c;
+    color: white;
+    text-transform: capitalize;
+    border-radius: 1px;
+    margin: 1rem 0;
+}
+
+.custom-btn:hover {
+    background-color: #ebcaeb;
+    border: 1px solid #3c203c;
+    color: #3c203c;
+    cursor: pointer;
+}
+
+@media (max-width:576px) {
+    .maintenance-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width:1200px) {
+    .maintenance-image {
+        display: flex;
+    }
+}
+
+@import url('animate.scss');
