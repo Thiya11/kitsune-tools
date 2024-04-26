@@ -5,7 +5,8 @@ import { MaintananceComponent } from "./maintanance.component";
 const routes:Routes = [
     {
         path:'maintenance',
-        component:MaintananceComponent
+        component:MaintananceComponent,
+        data:[{BREAD_CRUMB_TEXT:'MAINTANANCE'}]
     }
 ]
 

@@ -42,6 +42,7 @@ body{
     text-transform: capitalize;
     border-radius: 1px;
     margin: 1rem 0;
+    text-decoration: none;
 }
 
 .custom-btn:hover {
@@ -65,4 +66,19 @@ body{
     }
 }
 
+//page-not-found styles
+
+.page-not-found-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+   justify-content: center
+}
+
+.page-not-found-container {
+    padding: 1em !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+//animation import
 @import url('animate.scss');

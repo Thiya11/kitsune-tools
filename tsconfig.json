@@ -9,9 +9,13 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "maintanance": [
         "dist/maintanance"
+      ],
+      "pageNotFound": [
+        "dist/page-not-found"
       ]
     },
     "noFallthroughCasesInSwitch": true,
