@@ -1,0 +1,21 @@
+<div class="resistor-board">
+    <div class="resistor">
+        <div class="left">
+        </div>
+        <div class="center">
+            <div class="band" [style.background-color]="ResistorColorSwatchesArr[firstRing]?.hexcode">
+            </div>
+            <div class="band" [style.background-color]="ResistorColorSwatchesArr[secondRing]?.hexcode">
+            </div>
+            <div class="band" [style.background-color]="ResistorColorSwatchesArr[thirdRing]?.hexcode">
+            </div>
+            <div class="band" [style.background-color]="toleranceRing">
+            </div>
+        </div>
+        <div class="right">
+        </div>
+    </div>
+    <div class="value-box text-center">
+        Selected Resistance Value : {{selectedResistance | resistanceUnit}}
+    </div>
+</div>
