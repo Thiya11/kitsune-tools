@@ -116,7 +116,7 @@ body{
 //ohms calculator styles
 
 .standard-value-section {
-    margin-top: 2rem;
+    margin-top: 1rem;
     h2 {
         font-size: 18px;
     }
@@ -137,7 +137,7 @@ body{
 
 .standard-resistors-selector {
     display: flex;
-    margin: 1rem;
+    margin-bottom: 1rem;
 }
 
 .standard-resistors-selector div {
@@ -190,7 +190,7 @@ body{
 }
 
 .custom-resistor-build {
-    margin-top: 2rem;
+    margin-top: 1rem;
     h2 {
         font-size: 18px;
     }
@@ -443,7 +443,7 @@ input[type=number] {
     label {
         display: inline-block;
         width: 25px;
-        height: 40px;
+        height: 30px;
         margin-right: 5px;
         cursor: pointer;
         &:hover {

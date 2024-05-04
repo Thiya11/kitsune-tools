@@ -1,3 +1,7 @@
+<div class="ohms-calculator-header text-center my-2">
+    <h1 class="m-0 p-t-1">Ohm's Law Calculator</h1>
+    <h6 class="m-0 p-b-1">Find Voltage/Current for one resistor circuit. Learn color code for different resistors</h6>
+</div>
 <div class="ohms-calculator-wrapper">
     <div class="ohms-calculator-tabs col-lg-12 col-xl-7 col-12">
         <lib-tabs class="ohms-calculator-tabs">
@@ -62,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tolerance-selector col-6 col-lg-6 mt-3">
+                    <div class="tolerance-selector col-6 col-lg-6 mt-2">
                         <h2>Select Tolerence Value</h2>
                         <div class="custom-tolerence-ring">
                             <ng-select (change)="setTolerenceValue($event)" [ngModel]="selectedCustomTolerence">
