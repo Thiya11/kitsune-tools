@@ -1,0 +1,114 @@
+<div class="ohms-calculator-wrapper">
+    <div class="ohms-calculator-tabs col-lg-12 col-xl-7 col-12">
+        <lib-tabs class="ohms-calculator-tabs">
+            <lib-tab tabTitle="Standard Values">
+                <div class="col-12 standard-value-section">
+                    <div class="standard-value-options">
+                        <div class="standard-resistors-selector justify-content-sm-between justify-content-between 
+                      justify-content-md-start justify-content-lg-start justify-content-xl-start">
+                      <div *ngFor="let resistor of allStandardResistanceArr">
+                          <label *ngFor="let item of resistor">
+                              <input type="radio" [value]="item.value" name="standardResistor"
+                               (click)="setResistanceValues(item.value)" [checked]="item.value == 10">
+                              {{item.label | resistanceUnit}}
+                          </label>
+                      </div>
+                  </div>
+                  <h2>Select Tolerence Value</h2>
+                  <ng-select (change)="setTolerenceValue($event)" [ngModel]="selectedStandardTolerence">
+                    <ng-option *ngFor="let option of toleranceList" [value]="option.value">
+                         {{option.label + ' (&plusmn; ' + option.value + ')'}} 
+                         <span class="color-box" [style.background-color]="option.color"></span>
+                    </ng-option>
+                  </ng-select>
+                    </div>
+                  <div class="resistance-build-section" *ngIf="currentTab == 0">
+                      <lib-standard-resistance [firstRing]="firstRing" [secondRing]="secondRing" [thirdRing]="thirdRing" [toleranceRing]="toleranceRing">
+                      </lib-standard-resistance>
+                  </div>
+                </div>
+            </lib-tab>
+            <lib-tab tabTitle="Build Your Own Resistor">
+                <div class="custom-resistor-build">
+                    <div class="custom-resistor-options">
+                        <h2>Choose The First Ring Color</h2>
+                        <div class="custom-first-ring">
+                            <div class="custom-color" *ngFor="let color of ResistorColorSwatchesArr | keyvalue">
+                                <input type="radio" name="firstRing" [value]="color.key" [id]="color.value['color']+'1'"
+                                (click)="setCustomResistance('first', color.key)">
+                                <label class="color-label" [for]="color.value['color']+'1'">
+                                    <span [style.background-color]="color.value['hexcode']"></span>
+                                </label> 
+                            </div>
+                        </div>
+                        <h2>Choose The Second Ring Color</h2>
+                        <div class="custom-second-ring">
+                            <div class="custom-color" *ngFor="let color of ResistorColorSwatchesArr | keyvalue">
+                                <input type="radio" name="secondRing" [value]="color.key" [id]="color.value['color']+'2'"
+                                (click)="setCustomResistance('second', color.key)">
+                                <label class="color-label" [for]="color.value['color']+'2'">
+                                    <span [style.background-color]="color.value['hexcode']"></span>
+                                </label> 
+                            </div>
+                        </div>
+                        <h2>Choose The Third Ring Color</h2>
+                        <div class="custom-third-ring">
+                            <div class="custom-color" *ngFor="let color of ResistorColorSwatchesArr | keyvalue">
+                                <input type="radio" name="thirdRing" [value]="color.key" [id]="color.value['color']+'3'"
+                                (click)="setCustomResistance('third', color.key)">
+                                <label class="color-label" [for]="color.value['color']+'3'">
+                                    <span [style.background-color]="color.value['hexcode']"></span>
+                                </label> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tolerance-selector col-6 col-lg-6 mt-3">
+                        <h2>Select Tolerence Value</h2>
+                        <div class="custom-tolerence-ring">
+                            <ng-select (change)="setTolerenceValue($event)" [ngModel]="selectedCustomTolerence">
+                                <ng-option *ngFor="let option of toleranceList" [value]="option.value">
+                                     {{option.label + ' (&plusmn; ' + option.value + ')'}} 
+                                     <span class="color-box" [style.background-color]="option.color"></span>
+                                </ng-option>
+                              </ng-select>
+                        </div>
+                    </div>
+                    <div class="resistance-build-section" *ngIf="currentTab == 1">
+                        <lib-standard-resistance [firstRing]="customFirstRing" [secondRing]="customSecondRing" [thirdRing]="customThirdRing"
+                         [toleranceRing]="customToleranceRing">
+                        </lib-standard-resistance>
+                    </div>
+                </div>
+            </lib-tab>
+        </lib-tabs>
+    </div>
+    <div class="ohms-calculator-workboard col-lg-12 col-xl-4 col-12" [formGroup]="ohmsCalcForm">
+        <label class="note">
+            <h4 class="mb-2">Note:</h4>
+            <span class="bi bi-1-circle"> Select or Build your resistance</span> &nbsp;
+            <span class="bi bi-2-circle"> Enter any one of the below value to find another one.</span>
+        </label>
+        <div class="form-ohms">
+            <div class="form-group">
+                <label class="form-label" for="voltage">Voltage (V)</label>
+                <div class="form-control">
+                    <input type="number" placeholder="Enter Your Voltage" id="voltage" formControlName="voltage">
+                    <div class="custom-number-controls">
+                        <span class="bi bi-chevron-up" (click)="numIncreament('voltage')"></span>
+                        <span class="bi bi-chevron-down" (click)="numDecreament('voltage')"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="current">Current (A)</label>
+                <div class="form-control">
+                    <input type="number" placeholder="Enter Your Current" id="current" formControlName="current">
+                    <div class="custom-number-controls">
+                        <span class="bi bi-chevron-up" (click)="numIncreament('current')"></span>
+                        <span class="bi bi-chevron-down" (click)="numDecreament('current')"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

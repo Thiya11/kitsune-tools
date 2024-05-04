@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MESSAGES } from 'libs/configs/messages';
+import { MESSAGES } from 'libs/shared/configs/messages';
 import { SiteConfigService } from 'libs/shared/services/site-config.service';
 
 @Component({

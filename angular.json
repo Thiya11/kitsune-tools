@@ -32,6 +32,7 @@
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
               "libs/shared/styles/styles.scss",
               "apps/k-t/src/styles.scss"
             ],
@@ -161,6 +162,39 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "libs/page-not-found/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "ohmsCalculator": {
+      "projectType": "library",
+      "root": "libs/ohms-calculator",
+      "sourceRoot": "libs/ohms-calculator/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "libs/ohms-calculator/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ohms-calculator/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/ohms-calculator/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "libs/ohms-calculator/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
