@@ -32,7 +32,7 @@
                   </div>
                 </div>
             </lib-tab>
-            <lib-tab tabTitle="Build Your Own Resistor">
+            <lib-tab tabTitle="Have a Resistor but don't know the value">
                 <div class="custom-resistor-build">
                     <div class="custom-resistor-options">
                         <h2>Choose The First Ring Color</h2>
@@ -78,6 +78,43 @@
                         </div>
                     </div>
                     <div class="resistance-build-section" *ngIf="currentTab == 1">
+                        <lib-standard-resistance [firstRing]="customFirstRing" [secondRing]="customSecondRing" [thirdRing]="customThirdRing"
+                         [toleranceRing]="customToleranceRing">
+                        </lib-standard-resistance>
+                    </div>
+                </div>
+            </lib-tab>
+            <lib-tab tabTitle="Find a color code for Resistance value">
+                <div class="known-resistor-build">
+                    <div class="known-resistor-options">
+                       <div class="">
+                        <label for="resistance" class="form-label"> Resistance </label>
+                        <div class="custom-form-group" [formGroup]="knownResistorForm">
+                            <input type="number" class="form-control" placeholder="Enter known resistance value" formControlName="resistance">
+                            <ng-select 
+                             class="custom-select"
+                             formControlName="resistanceRange" 
+                             [items]="unitConversionResistor" 
+                             [clearable]="false"
+                             bindLabel="label"
+                             bindValue="value"
+                             >
+                            </ng-select>
+                        </div>
+                       </div>
+                    </div>
+                    <div class="tolerance-selector col-6 col-lg-6 mt-2">
+                        <h2>Select Tolerence Value</h2>
+                        <div class="custom-tolerence-ring">
+                            <ng-select (change)="setTolerenceValue($event)" [ngModel]="selectedCustomTolerence">
+                                <ng-option *ngFor="let option of toleranceList" [value]="option.value">
+                                     {{option.label + ' (&plusmn; ' + option.value + ')'}} 
+                                     <span class="color-box" [style.background-color]="option.color"></span>
+                                </ng-option>
+                              </ng-select>
+                        </div>
+                    </div>
+                    <div class="resistance-build-section" *ngIf="currentTab == 2">
                         <lib-standard-resistance [firstRing]="customFirstRing" [secondRing]="customSecondRing" [thirdRing]="customThirdRing"
                          [toleranceRing]="customToleranceRing">
                         </lib-standard-resistance>

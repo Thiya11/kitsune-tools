@@ -93,7 +93,7 @@ body{
 }
 
 .tabs-container .tab {
-    padding: 1.25em;
+    padding: 0.5em;
     text-align: center;
     cursor: pointer;
 
@@ -219,7 +219,11 @@ body{
     position: relative;
     display: flex;
     flex-direction: row;
-    width: 30vw;
+}
+
+.custom-form-group {
+    display: flex;
+    flex-direction: column;
 }
 
 .form-label {
@@ -246,6 +250,27 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.known-resistor-build {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 4rem;
+}
+
+.known-resistor-options .custom-form-group {
+    width: 20rem;
+    display: flex;
+    gap: 1%;
+    flex-direction: row;
+    input {
+        height: inherit;
+        width: 80%;
+    }
+    .custom-select {
+        width: 20%;
+    }
 }
 
 /* Firefox */
@@ -315,10 +340,10 @@ input[type=number] {
 }
 
 //large size screens
-@media (min-width:1025px) {
+@media (max-width:1199px) {
     .ohms-calculator-wrapper {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
     .standard-value-section {
         display: flex;

@@ -10,10 +10,13 @@ export class ResistanceUnitPipe implements PipeTransform {
         if (value < 1000) {
             return value + 'Ω'
         }
-        if (value > 1000 && value < 10000) {
+        if (value >= 1000 && value < 1000000) {
             return value / 1000 + 'kΩ'
         }
-        return value.replace(/0{3}$/,'kΩ')
+        if (value >= 1000000 && value < 999999999 ) {
+            return value / 1000000 + 'MΩ'
+        }
+        return 'Exceeds the limit'
     }
     
 }

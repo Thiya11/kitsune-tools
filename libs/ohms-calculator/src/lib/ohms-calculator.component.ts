@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TabService } from 'libs/shared/components/tabs/tab.service';
-import { RESISTORS_COLOR_SWATCH, RESISTOR_TOLERENCE_COLOR_SWATCH, STANDARD_RESISTOR_VALUES } from 'libs/shared/configs/general-values';
+import { RESISTORS_COLOR_SWATCH, RESISTOR_TOLERENCE_COLOR_SWATCH, STANDARD_RESISTOR_VALUES, UNIT_OPTIONS } from 'libs/shared/configs/general-values';
 import { CommonService } from 'libs/shared/services/common-service';
 
 @Component({
@@ -13,6 +13,7 @@ export class OhmsCalculatorComponent {
   public ResistorColorSwatchesArr: Array<any> = RESISTORS_COLOR_SWATCH;
   public toleranceColorSwatchesArr: any       = RESISTOR_TOLERENCE_COLOR_SWATCH;
   public ohmsCalcForm: FormGroup;
+  public knownResistorForm: FormGroup;
   public toleranceList: any = [];
   public allStandardResistanceArr: any = [];
   private resMultiplierArr: Array<number> = [1, 10, 100, 1000, 10000];
@@ -24,12 +25,18 @@ export class OhmsCalculatorComponent {
   public customSecondRing: number;
   public customThirdRing: number;
   public customToleranceRing: string;
+  public knownFirstRing: number;
+  public knownSecondRing: number;
+  public knownThirdRing: number;
+  public knownToleranceRing: string;
   public selectedStandardTolerence: string;
   public selectedCustomTolerence: string;
   public voltage: number;
   public current: number;
   public selectedResistance: number;
   public currentTab: number;
+  public finalResistance: number = 0;
+  public unitConversionResistor: any; 
 
   constructor(
     private commonService:CommonService,
@@ -41,6 +48,7 @@ export class OhmsCalculatorComponent {
     this.setResistanceValues(10);
     this.setCustomResistance('initiate','');
     this.selectedStandardTolerence = this.selectedCustomTolerence =  '1%';
+    this.unitConversionResistor = UNIT_OPTIONS 
 
     this.commonService.$selectedResistance.subscribe((resistance)=>{
       this.selectedResistance = Number(resistance)
@@ -51,7 +59,8 @@ export class OhmsCalculatorComponent {
       this.toleranceRing = this.customToleranceRing = this.commonService.findColorFromArr(this.toleranceList,'1%')
       this.f['voltage'].setValue(0);
       this.f['current'].setValue(0)
-      currentIndex == 1 ? this.activateElements() : '';
+      currentIndex == 1 || currentIndex == 2 ? this.activateElements() : '';
+      this.initateKnownResistorFormControls()
     })
   }
 
@@ -76,24 +85,49 @@ export class OhmsCalculatorComponent {
     }
   }
 
+  initateKnownResistorFormControls() {
+    this.knownResistorForm = new FormGroup({
+      resistance: new FormControl(10),
+      resistanceRange: new FormControl(1),
+    });
+
+    this.knownResistorForm.valueChanges.subscribe((formData:any)=> {
+      this.finalResistance = (Math.round(formData.resistance) * formData.resistanceRange)
+       if(this.finalResistance >= 10) {
+         this.setCustomResistance('first',this.finalResistance.toString()[0]);
+         this.setCustomResistance('second',this.finalResistance.toString()[1]);
+         this.setCustomResistance('third',this.finalResistance.toString().slice(2,this.finalResistance.toString().length).length.toString());
+         this.commonService.$selectedResistance.subscribe(val=> {
+          this.ohmsCalcForm.controls['voltage'].setValue((this.ohmsCalcForm.controls['current'].value * val).toFixed(5),{emitEvent:false});
+         })
+       }
+    })
+  }
+
   initiateFormControl() {
     this.ohmsCalcForm = new FormGroup({
       voltage: new FormControl(0),
       current: new FormControl(0)
     });
+    this.calculateResistance();
+  }
 
+  calculateResistance() {
     this.ohmsCalcForm.controls['current'].valueChanges.subscribe(val=>{
-       this.ohmsCalcForm.controls['voltage'].setValue((val * this.selectedResistance).toFixed(5),{emitEvent:false})
-    })
+      this.ohmsCalcForm.controls['voltage'].setValue((val * this.selectedResistance).toFixed(5),{emitEvent:false})
+   })
 
-    this.ohmsCalcForm.controls['voltage'].valueChanges.subscribe(val=>{
-      this.ohmsCalcForm.controls['current'].setValue((val / this.selectedResistance).toFixed(5),{emitEvent:false});
-    })
-
+   this.ohmsCalcForm.controls['voltage'].valueChanges.subscribe(val=>{
+     this.ohmsCalcForm.controls['current'].setValue((val / this.selectedResistance).toFixed(5),{emitEvent:false});
+   })
   }
 
   get f() {
     return this.ohmsCalcForm.controls
+  }
+
+  get c() {
+    return this.knownResistorForm.controls
   }
 
   setResistanceValues(val:number) {

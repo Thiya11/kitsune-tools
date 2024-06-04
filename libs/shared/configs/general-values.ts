@@ -84,3 +84,18 @@ export const RESISTOR_TOLERENCE_COLOR_SWATCH: any = {
         "hexcode": "#BFBFBFFF"
     }
 }
+
+export const UNIT_OPTIONS: any = [
+    {
+        label: 'kΩ',
+        value: 1000
+    },
+    {
+        label:'Ω',
+        value:1
+    },
+    {
+        label:'MΩ',
+        value: 1000000
+    },
+]
