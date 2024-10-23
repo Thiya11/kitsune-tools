@@ -11,6 +11,9 @@
     "noImplicitReturns": true,
     "strictPropertyInitialization": false,
     "paths": {
+      "core": [
+        "dist/core"
+      ],
       "maintanance": [
         "dist/maintanance"
       ],

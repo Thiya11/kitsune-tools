@@ -7,6 +7,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { MaintananceModule } from 'libs/maintanance/src/public-api';
 import { PageNotFoundModule } from 'libs/page-not-found/src/public-api';
 import { OhmsCalculatorModule } from 'libs/ohms-calculator/src/public-api';
+import { CoreModule } from 'libs/core/src/lib/core.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { OhmsCalculatorModule } from 'libs/ohms-calculator/src/public-api';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule,
     MaintananceModule,
     OhmsCalculatorModule,
     PageNotFoundModule

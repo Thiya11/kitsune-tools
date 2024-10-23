@@ -1,6 +1,8 @@
+@import '../../../apps/k-t/src/assets/styles/common-styles.scss';
+
 body{
     height: 100%;
-    background-color: #ebcaeb;
+    background-color:$background-color;
 }
 
 .body-container{
@@ -10,9 +12,9 @@ body{
 // maintenance component
 .maintenance-header {
     text-align: center;
-    background-color: #3c203c;
+    background-color: $primary-color;
     margin-top: 3rem;
-    color: #fff;
+    color: $white;
 }
 
 .maintenance-header h2 {
@@ -37,7 +39,7 @@ body{
 }
 
 .custom-btn {
-    background-color: #3c203c;
+    background-color: $primary-color;
     color: white;
     text-transform: capitalize;
     border-radius: 1px;
@@ -46,13 +48,37 @@ body{
 }
 
 .custom-btn:hover {
-    background-color: #ebcaeb;
-    border: 1px solid #3c203c;
-    color: #3c203c;
+    background-color: $secondary-button-color;
+    border: 1px solid $primary-color;
+    color: $primary-color;
     cursor: pointer;
 }
 
+.overview-card-group {
+    justify-content: center !important;
+}
+
+.overview-card-group > .card {
+    margin: 0.5rem 1rem !important;
+    width: 18rem !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    flex: 0 1 calc(20% - 8px)
+}
+
+.card-img-top {
+    border-top-left-radius: 8px !important; 
+    border-top-right-radius: 8px !important;
+}
+
 @media (max-width:576px) {
+
+    .known-resistor-build {
+        margin: 1rem !important;
+    }
+
     .maintenance-content {
         display: flex;
         flex-direction: column;
@@ -82,7 +108,10 @@ body{
 
 //custom tabs styles
 .tabs-container {
-    margin: 0.5rem;
+    margin: 1.5rem 0.75rem;
+    background-color: $white;
+    border-radius: 14px;
+    padding: 1.75rem;
     font-size: 16px;
     font-weight: 500;
 }
@@ -90,12 +119,15 @@ body{
 .tabs-container ul {
     justify-content: center;
     border-bottom: none;
+    gap: 10px;
 }
 
 .tabs-container .tab {
     padding: 0.5em;
     text-align: center;
     cursor: pointer;
+    border: 1px solid $primary-color;
+    border-radius: 2px;
 
 }
 
@@ -105,8 +137,8 @@ body{
 }
 
 .tabs-container .tab.active {
-    color: #fff;
-    background-color: #3c203c;
+    color: $white;
+    background-color: $primary-color;
 }
 
 .pane {
@@ -185,9 +217,9 @@ body{
     margin-bottom: 0.4em;
 }
 
-.resistor-board {
-     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;;
-}
+// .resistor-board {
+//      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;;
+// }
 
 .custom-resistor-build {
     margin-top: 1rem;
@@ -199,7 +231,10 @@ body{
 .ohms-calculator-workboard {
     margin-top: 2rem;
     text-align: center;
-    padding-top: 1rem;
+    background-color: $white;
+    border-radius: 14px;
+    height: 100%;
+    padding-top: 1.75rem;
 }
 
 .note{
@@ -235,7 +270,7 @@ body{
 
 .form-control {
     display: flex;
-    border: 1px solid lightgray;
+    border: 1px solid $light-gray;
     border-radius: 0.10rem;
     align-items: center;
     padding: 0.25rem 0rem  0.25rem 0.5rem!important;
@@ -255,12 +290,21 @@ input::-webkit-inner-spin-button {
 .known-resistor-build {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     margin-left: 4rem;
 }
 
+.known-resistor-options {
+    margin-bottom: 1rem;
+}
+
+.known-resistor-options > div > .form-label {
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+}
+
 .known-resistor-options .custom-form-group {
-    width: 20rem;
+    width: 25rem;
     display: flex;
     gap: 1%;
     flex-direction: row;
@@ -281,15 +325,26 @@ input[type=number] {
   border: none;
 }
 
+.custom-form-group > input {
+    border: 1px solid $light-gray;
+}
+
 .form-control input {
     &:focus {
-        outline: 1px solid #3c203c;
+        outline:none;
     }
 }
 
+.form-control:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: none;
+    border: 1px solid $secondary-background-color;
+}
+
 .custom-number-controls {
-    background-color: #3c203c;
-    color: #ebcaeb;
+    background-color: $primary-color;
+    color: $secondary-button-color;
     box-sizing: border-box;
     height: inherit;
     border-top-right-radius: 0.1rem;
@@ -337,6 +392,9 @@ input[type=number] {
         text-align: left;
         padding: 0.5rem;
     }
+    .tolerance-selector > h2 {
+        font-size: 18px;
+    }
 }
 
 //large size screens
@@ -344,6 +402,7 @@ input[type=number] {
     .ohms-calculator-wrapper {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
     .standard-value-section {
         display: flex;
@@ -369,6 +428,7 @@ input[type=number] {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        margin: 0.5rem 0.25rem 1.5rem 0.25rem;
     }
     .ohms-calculator-workboard .note {
         display: flex;
@@ -409,6 +469,8 @@ input[type=number] {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        margin-bottom: 1rem;
+        padding: 1rem;
     }
     .ohms-calculator-workboard .note {
         display: flex;
@@ -446,6 +508,9 @@ input[type=number] {
     }
     .form-group {
         width: inherit;
+    }
+    .tabs-container {
+        padding: 1rem 0.25rem;
     }
 }
 
@@ -486,7 +551,79 @@ input[type=number] {
     }
 }
 
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $primary-color;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 20px;
+    z-index: 2000;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 2.5rem;
+  }
 
-
+  .sidebar-item-icon{
+    padding: 0.5rem;
+  }
+  
+  .sidebar ul li a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: $white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar ul li a:hover {
+    background-color: $secondary-background-color;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    color: $white;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .open-btn {
+    font-size: 24px;
+    cursor: pointer;
+    background-color: $primary-color;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+  }
+  
+  .main-content {
+    margin-left: 185px;
+    padding: 0px;
+    transition: margin-left 0.3s;
+    position: fixed;
+    z-index: 2000;
+  }
+  
+  /* Hide the sidebar */
+  .sidebar.hidden {
+    width: 0;
+    padding-top: 0;
+  }
+  
+  .main-content.full-width {
+    margin-left: 0;
+  }
+  
 //animation import
 @import url('animate.scss');

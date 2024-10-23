@@ -98,4 +98,13 @@ export const UNIT_OPTIONS: any = [
         label:'MΩ',
         value: 1000000
     },
+];
+
+export const AVAILABLE_APPS: any = [
+    {
+        title: "Ohm's Law Calculator",
+        desc: "Checkout Ohm's law calculator and interactive way to analyze resistors and its values",
+        url:"ohms-calculator",
+        img:"resistor.jpg"
+    }
 ]
