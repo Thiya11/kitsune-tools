@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { SiteConfigService } from 'libs/shared/services/site-config.service';
-import { CONFIGS } from './configs/config';
+import { CONFIGS, UPPER_NAVIGATION } from './configs/config';
 import { TEXT_CONFIGS } from './configs/text-config';
 
 @Component({
@@ -22,6 +22,7 @@ export class AppComponent {
   setSiteConfigs() {
     this.siteConfigService.CONFIGS      = CONFIGS;
     this.siteConfigService.TEXT_CONFIGS = TEXT_CONFIGS;
+    this.siteConfigService.UPPER_NAVIGATION_URL = UPPER_NAVIGATION;
   }
 
 }

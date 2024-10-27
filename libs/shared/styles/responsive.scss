@@ -1,0 +1,254 @@
+@media (max-width:576px) {
+
+    .known-resistor-build {
+        margin: 1rem 0.25rem!important;
+    }
+
+    .overview-card-group {
+        display: flex;
+    }
+
+    .overview-card-group > .card {
+        flex: 0 1 calc(50% - 8px)
+    }
+
+    .maintenance-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .tolerance-selector h2 {
+        font-size: 16px;
+    }
+
+    .resistor {
+        font-size: 1.5rem;
+    }
+
+    .standard-resistors-selector > div {
+        margin: 0 0.25rem;
+    }
+
+    .ohms-calculator-header {
+        margin-top: 1.5rem !important;
+    }
+
+    .form-control {
+        height: 5.5vh !important;
+    }
+}
+
+@media (min-width:1200px) {
+    .maintenance-image {
+        display: flex;
+    }
+}
+
+@media (max-width:656px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-container ul {
+        flex-direction: column;
+    }
+
+    .footer-container ul li {
+        padding: 0.25rem;
+    }
+
+    .sidebar {
+        top: 0.75rem !important;
+    }
+
+    .main-content {
+        margin-top: 1rem !important;
+    }
+}
+
+//extra large size screens
+@media (min-width:1200px) {
+    .ohms-calculator-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+    .standard-value-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center
+    }
+    .custom-resistor-build {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .resistor-board {
+        padding: 2rem;
+        margin-top: 1rem;
+    }
+    .form-control {
+        height: 6.5vh;
+    }
+    .ohms-calculator-workboard {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .ohms-calculator-workboard .note {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        padding: 0.5rem;
+    }
+    .tolerance-selector > h2 {
+        font-size: 18px;
+    }
+}
+
+//large size screens
+@media (max-width:1199px) {
+    .ohms-calculator-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .standard-value-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center
+    }
+    .custom-resistor-build {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .resistor-board {
+        padding: 2rem;
+        margin-top: 1rem;
+    }
+    .form-control {
+        height: 6.5vh;
+    }
+    .ohms-calculator-workboard {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0.5rem 0.25rem 1.5rem 0.25rem;
+    }
+    .ohms-calculator-workboard .note {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        padding: 0.5rem;
+    }
+}
+
+//medium screen sizes
+
+@media (min-width:577px) and (max-width:1024px) {
+    
+    .overview-card-group {
+        display: flex;
+    }
+    
+    .overview-card-group > .card{
+        flex: 0 1 calc(30% - 8px)
+    }
+
+}
+
+@media (max-width:1024px) {
+    .ohms-calculator-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .standard-value-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center
+    }
+    .custom-resistor-build {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .resistor-board {
+        padding: 2rem;
+        margin-top: 1rem;
+    }
+    .form-control {
+        height: 3.5vh;
+    }
+    .ohms-calculator-workboard {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+    .ohms-calculator-workboard .note {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        padding: 0.5rem;
+    }
+}
+
+//smaller screen sizes
+
+@media (max-width:768px) {
+    .ohms-calculator-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .standard-value-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center
+    }
+    .custom-resistor-build {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center
+    }
+    .resistor-board {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    .form-control {
+        height: 4.5vh;
+    }
+    .form-group {
+        width: inherit;
+    }
+    .tabs-container {
+        padding: 1rem 0.25rem;
+    }
+}
+
+//for tablet views
+
+@media (min-width: 657px) and (max-width: 1024px) {
+    .main-wrapper {
+        min-height: 95vh;
+    }
+}
+
+@media (orientation:landscape){
+    .main-wrapper {
+        min-height: 95vh;
+    }
+}
