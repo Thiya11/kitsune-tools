@@ -8,7 +8,9 @@ import { Observable, Subject } from "rxjs";
 
 export class CommonService {
     public _selectedResistance:Subject<any>    = new Subject();
-    public $selectedResistance:Observable<any> = this._selectedResistance.asObservable()
+    public $selectedResistance:Observable<any> = this._selectedResistance.asObservable();
+    public _pendulumGraphData:Subject<any>     = new Subject();
+    public $pendulumGraphData:Observable<any>  = this._pendulumGraphData.asObservable();
     
     formatObjtoArray(obj:any) {
         let convertedArr = [];

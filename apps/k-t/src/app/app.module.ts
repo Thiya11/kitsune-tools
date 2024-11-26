@@ -8,6 +8,7 @@ import { MaintananceModule } from 'libs/maintanance/src/public-api';
 import { PageNotFoundModule } from 'libs/page-not-found/src/public-api';
 import { OhmsCalculatorModule } from 'libs/ohms-calculator/src/public-api';
 import { CoreModule } from 'libs/core/src/lib/core.module';
+import { PendulumSimModule } from 'libs/pendulum-sim/src/lib/pendulum-sim.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CoreModule } from 'libs/core/src/lib/core.module';
     CoreModule,
     MaintananceModule,
     OhmsCalculatorModule,
-    PageNotFoundModule
+    PendulumSimModule,
+    PageNotFoundModule,
   ],
   providers: [
     {provide:LocationStrategy,useClass:PathLocationStrategy}

@@ -33,8 +33,8 @@
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/@ng-select/ng-select/themes/default.theme.css",
-              "libs/shared/styles/styles.scss",
-              "apps/k-t/src/styles.scss"
+              "apps/k-t/src/styles.scss",
+              "libs/shared/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -228,6 +228,39 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "libs/core/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "pendulumSim": {
+      "projectType": "library",
+      "root": "libs/pendulum-sim",
+      "sourceRoot": "libs/pendulum-sim/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "libs/pendulum-sim/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/pendulum-sim/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/pendulum-sim/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "libs/pendulum-sim/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
