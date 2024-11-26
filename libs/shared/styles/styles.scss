@@ -1,13 +1,220 @@
 @import '../../../apps/k-t/src/assets/styles/common-styles.scss';
 
+//pendulum animation
+.planet-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.planet-label {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    text-align: center;
+}
+
+.pendulum-analysis {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pendulum-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.pendulum-fields {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.custom-control {
+    display: flex;
+    flex-direction: column
+}
+
+.planet-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none; 
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 15px;
+    background: #ccc;
+    border-radius: 16px;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 15px;
+    background: #ccc;
+    border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none; 
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid $primary-color;
+    box-shadow: -407px 0 0 400px $primary-color;
+}
+
+input[type="range"]::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid $primary-color;
+    box-shadow: -407px 0 0 400px $primary-color;
+}
+
+.planet-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 120px;
+}
+
+.planet-container {
+    padding-top: 1rem;
+}
+
+.planet-card input[type="radio"] {
+    display: none;
+}  
+
+.planet-card input[type="radio"]:checked + .content {
+    font-weight: bold;
+    color: $white;
+}
+
+.planet-card .content {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.planet-card.selected {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.planet-card::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 40px;
+    margin: 0 0 -16px -68px;
+    border-top-right-radius: 50px
+}
+
+.planet-card:nth-child(odd)::after {
+    background-color: #fff;
+}
+
+.planet-card:nth-child(even)::after {
+    background-color: #ccc;
+}
+
+.range-value {
+    padding: 0.5rem 0.25rem;
+    border: 1px dotted #ccc;
+    color: $primary-color;
+    font-weight: 500;
+}
+
+:host {
+    display: block;
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
 body{
     height: 100%;
+    width: 100%;
     background-color:$background-color;
 }
 
 .body-container{
     height: 98vh;
 }
+
+//header css
+
+.header-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main-wrapper {
+    min-height: 89vh;
+}
+
+//footer css
+
+.core-wrapper {
+    width: 100%;
+}
+
+.footer-container{
+    padding: 0.5rem 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $primary-color;
+    color: $white;
+}
+
+.footer-container ul{
+    display: flex;
+    padding: 0;
+    flex-direction: row;
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.footer-container ul li {
+    padding: 0 0.5rem;
+}
+
+.footer-container ul li a, .copyright-info a {
+    text-decoration: none;
+    color:$white;
+    font-weight: 550;
+    &:hover{
+        color: $secondary-button-color;
+    }
+}
+
 
 // maintenance component
 .maintenance-header {
@@ -54,18 +261,38 @@ body{
     cursor: pointer;
 }
 
+.overview-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.overview-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 .overview-card-group {
     justify-content: center !important;
 }
 
 .overview-card-group > .card {
-    margin: 0.5rem 1rem !important;
+    margin: 0.5rem 0.5rem !important;
     width: 18rem !important;
     border-top-left-radius: 8px !important;
     border-top-right-radius: 8px !important;
     border-bottom-left-radius: 8px !important;
     border-bottom-right-radius: 8px !important;
-    flex: 0 1 calc(20% - 8px)
+    flex: 0 1 calc(20% - 8px);
+    transition: box-shadow 0.5s ease-out;
+}
+
+.overview-card-group > .card:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    cursor: pointer;
 }
 
 .card-img-top {
@@ -73,23 +300,20 @@ body{
     border-top-right-radius: 8px !important;
 }
 
-@media (max-width:576px) {
-
-    .known-resistor-build {
-        margin: 1rem !important;
-    }
-
-    .maintenance-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-    }
+.card-body {
+    text-align: justify;
 }
 
-@media (min-width:1200px) {
-    .maintenance-image {
-        display: flex;
-    }
+.btn-primary, .btn-primary:hover, .btn-primary:active {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    font-weight: 600;
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background-color: $white !important;
+    color: $primary-color !important;
+    border-color: $primary-color !important;
 }
 
 //page-not-found styles
@@ -234,7 +458,7 @@ body{
     background-color: $white;
     border-radius: 14px;
     height: 100%;
-    padding-top: 1.75rem;
+    padding: 1.75rem;
 }
 
 .note{
@@ -265,6 +489,9 @@ body{
     margin-right: 0.5rem;
     margin-bottom: 0;
     margin-top: 0.5rem;
+    text-wrap: nowrap;
+    font-size: 18px;
+    font-weight: 600;
     width: 40%;
 }
 
@@ -296,6 +523,9 @@ input::-webkit-inner-spin-button {
 
 .known-resistor-options {
     margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .known-resistor-options > div > .form-label {
@@ -304,7 +534,6 @@ input::-webkit-inner-spin-button {
 }
 
 .known-resistor-options .custom-form-group {
-    width: 25rem;
     display: flex;
     gap: 1%;
     flex-direction: row;
@@ -355,168 +584,13 @@ input[type=number] {
     cursor: pointer;
 }
 
-//extra large size screens
-@media (min-width:1200px) {
-    .ohms-calculator-wrapper {
-        display: flex;
-        flex-direction: row;
-    }
-    .standard-value-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center
-    }
-    .custom-resistor-build {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    }
-    .resistor-board {
-        padding: 2rem;
-        margin-top: 1rem;
-    }
-    .form-control {
-        height: 6.5vh;
-    }
-    .ohms-calculator-workboard {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-    }
-    .ohms-calculator-workboard .note {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        padding: 0.5rem;
-    }
-    .tolerance-selector > h2 {
-        font-size: 18px;
-    }
-}
-
-//large size screens
-@media (max-width:1199px) {
-    .ohms-calculator-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .standard-value-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center
-    }
-    .custom-resistor-build {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    }
-    .resistor-board {
-        padding: 2rem;
-        margin-top: 1rem;
-    }
-    .form-control {
-        height: 6.5vh;
-    }
-    .ohms-calculator-workboard {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        margin: 0.5rem 0.25rem 1.5rem 0.25rem;
-    }
-    .ohms-calculator-workboard .note {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        padding: 0.5rem;
-    }
-}
-
-//medium screen sizes
-
-@media (max-width:1024px) {
-    .ohms-calculator-wrapper {
-        display: flex;
-        flex-direction: column;
-    }
-    .standard-value-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center
-    }
-    .custom-resistor-build {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    }
-    .resistor-board {
-        padding: 2rem;
-        margin-top: 1rem;
-    }
-    .form-control {
-        height: 3.5vh;
-    }
-    .ohms-calculator-workboard {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        margin-bottom: 1rem;
-        padding: 1rem;
-    }
-    .ohms-calculator-workboard .note {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        padding: 0.5rem;
-    }
-}
-
-//smaller screen sizes
-
-@media (max-width:768px) {
-    .ohms-calculator-wrapper {
-        display: flex;
-        flex-direction: column;
-    }
-    .standard-value-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center
-    }
-    .custom-resistor-build {
-        display: flex;
-        justify-content: space-around;
-        flex-direction: column;
-        align-items: center
-    }
-    .resistor-board {
-        padding: 1rem;
-        margin-top: 1rem;
-    }
-    .form-control {
-        height: 4.5vh;
-    }
-    .form-group {
-        width: inherit;
-    }
-    .tabs-container {
-        padding: 1rem 0.25rem;
-    }
-}
-
 .custom-first-ring, .custom-second-ring, .custom-third-ring {
     display: flex;
     margin: 0.5rem 0;
+}
+
+.color-label > span {
+    border: 1.5px solid $crimson;
 }
 
 .custom-resistor-options {
@@ -555,7 +629,7 @@ input[type=number] {
     height: 100%;
     width: 250px;
     position: fixed;
-    top: 0;
+    top: 2rem;
     left: 0;
     background-color: $primary-color;
     overflow-x: hidden;
@@ -599,16 +673,17 @@ input[type=number] {
   }
   
   .open-btn {
-    font-size: 24px;
+    font-size: 18px;
     cursor: pointer;
     background-color: $primary-color;
     color: white;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: none;
   }
   
   .main-content {
     margin-left: 185px;
+    margin-top: 2.75rem;
     padding: 0px;
     transition: margin-left 0.3s;
     position: fixed;
@@ -625,5 +700,7 @@ input[type=number] {
     margin-left: 0;
   }
   
+
 //animation import
-@import url('animate.scss');
+@import './animate.scss';
+@import './responsive.scss';

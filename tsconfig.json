@@ -22,6 +22,9 @@
       ],
       "pageNotFound": [
         "dist/page-not-found"
+      ],
+      "pendulumSim": [
+        "dist/pendulum-sim"
       ]
     },
     "noFallthroughCasesInSwitch": true,

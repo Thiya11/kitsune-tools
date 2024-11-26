@@ -7,6 +7,7 @@ import { Injectable } from "@angular/core";
 export class SiteConfigService {
     public _CONFIGS: any;
     public _TEXT_CONFIGS: any;
+    public _UPPER_NAVIGATION_URL:any;
 
     set CONFIGS(CONFIGS:any) {
         this._CONFIGS = CONFIGS;
@@ -23,4 +24,13 @@ export class SiteConfigService {
     get TEXT_CONFIGS() {
         return this._TEXT_CONFIGS
     }
+
+    set UPPER_NAVIGATION_URL(UPPER_NAVIGATION:any) {
+        this._UPPER_NAVIGATION_URL = UPPER_NAVIGATION;
+    }
+
+    get UPPER_NAVIGATION_URL() {
+        return this._UPPER_NAVIGATION_URL;
+    }
+
 }

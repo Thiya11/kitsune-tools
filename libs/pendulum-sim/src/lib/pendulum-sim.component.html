@@ -1,0 +1,35 @@
+<div class="ohms-calculator-header text-center my-2">
+    <h1 class="m-0 p-t-1">Simple Pendulum</h1>
+    <h6 class="m-0 p-b-1">Let's find out how simple pendulum moves in different planet.
+         Along with damping and string length changes
+    </h6>
+</div>
+<div class="p-4 row col-12 pendulum-analysis">
+    <div #canvas class="col-lg-5 col-xl-5 col-md-6 col-sm-12 col-xs-12 mb-md-4" id="p5canvas"></div>
+    <lib-line-graph class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-xs-12"></lib-line-graph>
+</div>
+<form class="pendulum-form col-12 pb-4">
+    <div class="pendulum-fields">
+        <div class="custom-control col-4">
+            <label class="form-label">Damping</label>
+            <input type="range" min="0.0" max="0.10" step="0.001" name="damping" [(ngModel)]="damping"/>
+            <span class="range-value col-1 col-xs-3 col-md-2 mt-2">{{damping}}</span>
+        </div>
+        <div class="custom-control col-4">
+            <label class="form-label">Pendulum Length</label>
+            <input type="range" min="50"  max="350" step="10" name="pendulumLength" [(ngModel)]="pendulumLength"/>
+            <span class="range-value col-1 col-xs-3 col-md-2 mt-2">{{pendulumLength}}</span>
+        </div>
+    </div>
+    <div class="planet-selector p-4">
+        <label class="form-label planet-label">Select Planet</label>
+        <div class="planet-container">
+            <label *ngFor="let planet of planetsList" class="planet-card" [id]="'planet_card_' + planet.id"
+             [style.backgroundColor]="planet.color" [ngClass]="planet.id > 3 ? 'below' : ''">
+                <input class="planet-select" type="radio" name="planetSelect" [id]="'planet_' + planet.id" [value]="planet.value"
+                  [(ngModel)]="gravity" (ngModelChange)="onPlanetChange(planet)">
+                <div class="content">{{planet.label}}</div>
+            </label>
+        </div>
+    </div>
+</form>

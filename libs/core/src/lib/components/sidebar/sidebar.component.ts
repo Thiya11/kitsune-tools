@@ -9,7 +9,6 @@ export class SideBarComponent {
     public isSideBarHidden: boolean = true;
 
     toggleSideBar() {
-        console.log(this.isSideBarHidden)
         this.isSideBarHidden = !this.isSideBarHidden
     }
 }
